@@ -43,11 +43,22 @@ const response = {
   ],
 };
 
+// ──────────────────────────────────────────────
+// Types
+// ──────────────────────────────────────────────
+interface CardProps {
+  title: string;
+  body: string;
+  image: string;
+}
 
+// ──────────────────────────────────────────────
+// Navbar
+// ──────────────────────────────────────────────
 function Navbar() {
   return (
     <nav className="bg-blue-600 text-white px-8 py-4 flex justify-between items-center shadow-lg fixed top-0 w-full z-50">
-      <span className="font-bold text-xl tracking-wide">Risyad</span>
+      <span className="font-bold text-xl tracking-wide">My Name</span>
       <div className="flex gap-8 text-sm font-medium">
         <a href="#home" className="hover:text-blue-200 transition-colors duration-200">
           Home
@@ -63,6 +74,9 @@ function Navbar() {
   );
 }
 
+// ──────────────────────────────────────────────
+// Hero / Home Section
+// ──────────────────────────────────────────────
 function Hero() {
   return (
     <section
@@ -75,8 +89,10 @@ function Hero() {
   );
 }
 
-
-function Card({ title, body, image }) {
+// ──────────────────────────────────────────────
+// Card Component
+// ──────────────────────────────────────────────
+function Card({ title, body, image }: CardProps) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
       <img
@@ -89,7 +105,7 @@ function Card({ title, body, image }) {
           {title}
         </h3>
         <p className="text-sm text-gray-500 leading-relaxed flex-1">
-          {body.replace(/\\n/g, " ")}
+          {body.replace(/\n/g, " ")}
         </p>
         <button className="mt-2 self-start text-sm text-blue-600 font-medium hover:underline">
           Read more →
@@ -99,12 +115,16 @@ function Card({ title, body, image }) {
   );
 }
 
-
+// ──────────────────────────────────────────────
+// Cards Grid Section
+// ──────────────────────────────────────────────
 function CardsSection() {
   return (
     <section id="profile" className="py-16 px-6 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">Posts</h2>
-      <p className="text-center text-gray-400 mb-10 text-sm">Displaying data with JavaScript map()</p>
+      <p className="text-center text-gray-400 mb-10 text-sm">
+        Displaying data with JavaScript map()
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {response.results.map((item) => (
           <Card
@@ -119,9 +139,11 @@ function CardsSection() {
   );
 }
 
-
+// ──────────────────────────────────────────────
+// Counter Demo (useState + useEffect)
+// ──────────────────────────────────────────────
 function CounterSection() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     if (count !== 0 && count % 10 === 0) {
@@ -164,15 +186,21 @@ function CounterSection() {
   );
 }
 
+// ──────────────────────────────────────────────
+// Footer
+// ──────────────────────────────────────────────
 function Footer() {
   return (
     <footer className="bg-blue-600 text-blue-100 text-center py-5 text-sm">
-      © 2024 Risyad · Database System Practicum Module 10
+      © 2024 My Name · Database System Practicum Module 10
     </footer>
   );
 }
 
-export default function App() {
+// ──────────────────────────────────────────────
+// Root Page (replaces app/page.tsx entirely)
+// ──────────────────────────────────────────────
+export default function Page() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
